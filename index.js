@@ -1,5 +1,6 @@
 const express = require('express');
 const dotenv=require('dotenv');
+const cors = require('cors');
 // const connectWithDb = require('./config/db');
 const connectDB=require("./config/db");
 // require('dotenv').config();
@@ -9,6 +10,7 @@ dotenv.config();
 // connect with database
 connectDB();
 // for swagger documentation
+app.use(cors({ origin:"*" ,methods:"GET,POST,PUT,DELETE",credentials:true}));
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./swagger.yaml');
